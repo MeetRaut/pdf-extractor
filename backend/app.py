@@ -8,7 +8,7 @@ CORS(app)
 
 @app.route('/', methods=['GET'])
 def home():
-    return "Welcome to my application!"
+    return "Welcome to my application! This is Backend"
 
 
 @app.route('/upload', methods=['POST'])
