@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display PDF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Contents of {{ filename }}</h1>
+    <pre id="pdfText">{{ pdf_text }}</pre>
+    <div class="button-container">
+        <button onclick="copyText()">Copy Text</button>
+        <a href="{{ url_for('index') }}">Upload another file</a>
+    </div>
+
+    <script>
+        function copyText() {
+            const pdfText = document.getElementById('pdfText').innerText;
+            navigator.clipboard.writeText(pdfText).then(function() {
+                alert('Text copied to clipboard');
+            }).catch(function(err) {
+                alert('Error in copying text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
